@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="423.0" prefWidth="835.0" style="-fx-background-color: #f20400;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="423.0" prefWidth="835.0" style="-fx-background-color: #f20400;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <AnchorPane layoutX="417.0" layoutY="70.0" prefHeight="307.0" prefWidth="395.0" style="-fx-background-color: #78f05d;">
          <children>
@@ -29,7 +28,7 @@
       </Label>
       <AnchorPane layoutX="22.0" layoutY="70.0" prefHeight="307.0" prefWidth="372.0" style="-fx-background-color: #78f05d;">
          <children>
-            <Button layoutX="134.0" layoutY="99.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="103.0" text="Teachers" />
+            <Button layoutX="134.0" layoutY="99.0" mnemonicParsing="false" onAction="#Tsignup" prefHeight="54.0" prefWidth="103.0" text="Teachers" />
             <Button layoutX="138.0" layoutY="176.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="96.0" text="Students" />
             <Label layoutX="97.0" layoutY="14.0" text="New? Signup !">
                <font>
