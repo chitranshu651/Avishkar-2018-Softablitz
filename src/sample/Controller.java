@@ -23,4 +23,21 @@ public class Controller {
 
     }
 
+    public void SSignup(ActionEvent click) throws IOException {
+        Parent StudentSign= FXMLLoader.load(getClass().getResource("Student_SignUp.fxml"));
+        Scene StudentSignupScene= new Scene(StudentSign);
+
+        Stage window = (Stage)((Node) click.getSource()).getScene().getWindow();
+        window.setScene(StudentSignupScene);
+        window.show();
+    }
+
+    public void Login(ActionEvent event){
+        ConnectionClass login = new ConnectionClass();
+        Connection connection= login.getconnection();
+
+
+    }
+
+
 }
