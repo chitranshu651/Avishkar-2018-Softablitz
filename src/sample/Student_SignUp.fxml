@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Student_SignUp_Controller">
    <children>
-      <TextField fx:id="name" layoutX="86.0" layoutY="57.0" prefHeight="26.0" prefWidth="338.0" promptText="Name" />
-      <TextField fx:id="email" layoutX="86.0" layoutY="100.0" prefHeight="26.0" prefWidth="338.0" promptText="Email" />
-      <TextField fx:id="Reg_No" layoutX="86.0" layoutY="146.0" prefHeight="26.0" prefWidth="338.0" promptText="Registration No." />
-      <TextField fx:id="user" layoutX="86.0" layoutY="193.0" prefHeight="26.0" prefWidth="338.0" promptText="Username" />
-      <TextField fx:id="password" layoutX="86.0" layoutY="237.0" prefHeight="26.0" prefWidth="338.0" promptText="Password" />
-      <TextField fx:id="confirm" layoutX="86.0" layoutY="285.0" prefHeight="26.0" prefWidth="338.0" promptText="Confirm Password" />
-      <Button layoutX="215.0" layoutY="329.0" mnemonicParsing="false" onAction="#SSignUp" prefHeight="39.0" prefWidth="80.0" text="Sign Up" />
       <Label layoutX="213.0" layoutY="14.0" text="Student Signup">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="name" labelFloat="true" layoutX="102.0" layoutY="75.0" prefHeight="26.0" prefWidth="335.0" promptText="Name" />
+      <JFXTextField fx:id="email" labelFloat="true" layoutX="102.0" layoutY="131.0" prefHeight="26.0" prefWidth="335.0" promptText="Email" />
+      <JFXTextField fx:id="Reg_No" labelFloat="true" layoutX="102.0" layoutY="185.0" prefHeight="26.0" prefWidth="335.0" promptText="Registration No" />
+      <JFXTextField fx:id="password" labelFloat="true" layoutX="102.0" layoutY="244.0" prefHeight="26.0" prefWidth="335.0" promptText="Password" />
+      <JFXTextField fx:id="confirm" labelFloat="true" layoutX="102.0" layoutY="302.0" prefHeight="26.0" prefWidth="335.0" promptText="Confirm Password" />
+      <JFXButton buttonType="RAISED" layoutX="240.0" layoutY="360.0" onAction="#SSignUp" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: #0066ff;" text="Sign Up" textFill="#f2eced">
+         <ripplerFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="#b72222" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </ripplerFill>
+      </JFXButton>
+      <Label layoutX="563.0" layoutY="14.0" onMouseClicked="#Close" text="X">
          <font>
             <Font size="24.0" />
          </font>

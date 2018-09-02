@@ -6,28 +6,44 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import com.jfoenix.controls.JFXTextField;
+import javafx.fxml.FXML;
 
 public class Student_SignUp_Controller {
-    public TextField name;
-    public TextField email;
-    public TextField user;
-    public TextField password;
-    public TextField Reg_No;
-    public TextField confirm;
 
-    public void SSignUp(ActionEvent event) throws SQLException, IOException {
+    @FXML
+    private JFXTextField name;
+
+    @FXML
+    private JFXTextField email;
+
+    @FXML
+    private JFXTextField Reg_No;
+
+    @FXML
+    private JFXTextField password;
+
+    @FXML
+    private JFXTextField confirm;
+
+    @FXML
+    void SSignUp(ActionEvent event) throws SQLException, IOException, InvalidKeySpecException {
 
         ConnectionClass Student = new ConnectionClass();
         Connection connection= Student.getconnection();
         if ((password.getText()).equals(confirm.getText())){
-        String sql ="INSERT INTO `students`(`Name`, `Email`, `Registration No`, `Username`, `Password`) VALUES('"+ name.getText() + "','" + email.getText() +"'," +Reg_No.getText() +",'"+ user.getText() +"','"+ password.getText() +"')";
+            PasswordUtils pass= new PasswordUtils();
+            String salt= pass.getSalt(30);
+            String securePass= pass.generateSecurePassword(password.getText(), salt);
+        String sql ="INSERT INTO `students`(`Name`, `Email`, `Registration_No`, `Password`, `Salt`) VALUES('"+ name.getText() + "','" + email.getText() +"'," +Reg_No.getText() +",'"+
+            securePass +"','" + salt + "')";
         Statement statement= connection.createStatement();
         statement.execute(sql);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -52,4 +68,8 @@ public class Student_SignUp_Controller {
     }
 
 }
+    @FXML
+    private void Close(MouseEvent event){
+        System.exit(0);
+    }
 }
