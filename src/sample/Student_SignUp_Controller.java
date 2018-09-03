@@ -1,5 +1,7 @@
 package sample;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -28,10 +30,41 @@ public class Student_SignUp_Controller {
     private JFXTextField Reg_No;
 
     @FXML
-    private JFXTextField password;
+    private JFXPasswordField password;
 
     @FXML
-    private JFXTextField confirm;
+    private JFXPasswordField confirm;
+
+    @FXML
+    private void initialize(){
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        validator.setMessage("Input Required");
+        name.getValidators().add(validator);
+        name.focusedProperty().addListener((o, oldVal, newVal) ->{
+            if(!newVal)
+                name.validate();
+        });
+        email.getValidators().add(validator);
+        email.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if(!newVal)
+                email.validate();
+        });
+        Reg_No.getValidators().add(validator);
+        Reg_No.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if(!newVal)
+                Reg_No.validate();
+        });
+        password.getValidators().add(validator);
+        password.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if(!newVal)
+                password.validate();
+        });
+        confirm.getValidators().add(validator);
+        confirm.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if(!newVal)
+                confirm.validate();
+        });
+    }
 
     @FXML
     void SSignUp(ActionEvent event) throws SQLException, IOException, InvalidKeySpecException {
@@ -68,6 +101,17 @@ public class Student_SignUp_Controller {
     }
 
 }
+
+    @FXML
+    private void back(MouseEvent event) throws IOException{
+        Parent home_parent= FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene Home= new Scene(home_parent);
+
+        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+        window.setScene(Home);
+        window.show();
+    }
+
     @FXML
     private void Close(MouseEvent event){
         System.exit(0);

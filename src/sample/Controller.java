@@ -1,7 +1,9 @@
 package sample;
 
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,13 +26,24 @@ public class Controller {
     private JFXTextField user;
 
     @FXML
-    private JFXTextField password;
+    private JFXPasswordField password;
 
     @FXML
     private JFXRadioButton Teacher;
 
     @FXML
     private JFXRadioButton Student;
+
+    @FXML
+    private void initialize(){
+        RequiredFieldValidator validator= new RequiredFieldValidator();
+        validator.setMessage("Input Required");
+        user.getValidators().add(validator);
+        user.focusedProperty().addListener((o, oldVal, newVal) -> {
+            if (!newVal)
+                user.validate();
+        });
+    }
 
     @FXML
     private void Tsignup(ActionEvent click) throws IOException {
