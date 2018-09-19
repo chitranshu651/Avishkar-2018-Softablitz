@@ -74,8 +74,7 @@ public class Teacher_SignUp_Controller {
             PasswordUtils pass= new PasswordUtils();
             String salt= pass.getSalt(30);
             String securePass= pass.generateSecurePassword(password.getText(), salt);
-            String sql ="INSERT INTO `teachers`(`Name`, `Email`, `Teacher_ID`,`Password`, `Salt`) VALUES('"+ name.getText() + "','" + email.getText() +"'," +id.getText() +",'"
-                    + securePass +"', '" + salt + "')";
+            String sql ="INSERT INTO `teachers`(`Name`, `Email`, `Teacher_ID`,`Password`, `Salt`) VALUES('"+ name.getText() + "','" + email.getText() +"'," +id.getText() +",'" + securePass +"', '" + salt + "');";
             Statement statement= connection.createStatement();
             statement.execute(sql);
             Alert alert = new Alert(AlertType.INFORMATION);

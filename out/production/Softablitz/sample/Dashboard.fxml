@@ -1,81 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="580.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Dashboard_Controller">
-   <children>
 
-      <Label layoutX="491.0" layoutY="160.0" prefHeight="27.0" prefWidth="70.0" text="Test:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="-1.0" layoutY="294.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.9" prefHeight="286.0" prefWidth="794.0" style="-fx-background-color: #124654;">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Dashboard_Controller">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="132.0" style="-fx-background-color: #535559;">
          <children>
-            <Label fx:id="T_Unique" layoutX="176.0" layoutY="255.0" prefHeight="27.0" prefWidth="307.0" text="Number of unique Teachers joined today: " textFill="#59ff00" />
-         </children></AnchorPane>
-      <Label fx:id="User_ID" alignment="CENTER" layoutX="318.0" layoutY="50.0" prefHeight="37.0" prefWidth="200.0" text=" Welcome, ( ID )" textAlignment="JUSTIFY">
-         <font>
-            <Font name="Webdings" size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="173.0" layoutY="160.0" prefHeight="27.0" prefWidth="70.0" text="Subject:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TableView layoutX="173.0" layoutY="190.0" prefHeight="360.0" prefWidth="291.0">
-        <columns>
-          <TableColumn fx:id="Subject_Name" prefWidth="205.0" text="Name:" />
-            <TableColumn fx:id="Edit_Date" prefWidth="85.0" text="Last Edited:" />
-        </columns>
-      </TableView>
-      <TableView layoutX="490.0" layoutY="190.0" prefHeight="360.0" prefWidth="291.0">
-         <columns>
-            <TableColumn fx:id="Subject_Name1" prefWidth="205.0" text="Name:" />
-            <TableColumn fx:id="Edit_Date1" prefWidth="85.0" text="Last Edited:" />
-         </columns>
-      </TableView>
-      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" prefHeight="580.0" prefWidth="150.0">
-         <children>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" mouseTransparent="true" onAction="#Home" prefHeight="205.0" text="Home">
+            <JFXButton layoutX="39.0" layoutY="333.0" onAction="#Logout" style="-fx-background-color: #0066ff;" text="Logout" textFill="#fdfafa" />
+            <Label fx:id="home" contentDisplay="CENTER" layoutX="7.0" layoutY="146.0" onMouseClicked="#Home" prefHeight="26.0" prefWidth="118.0" text="Home" textAlignment="CENTER" textFill="#e8e8e8">
                <font>
-                  <Font name="Segoe UI Black" size="18.0" />
+                  <Font size="17.0" />
                </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#S_List" prefHeight="205.0" text="Student List">
+            </Label>
+            <Label fx:id="lblTest" layoutX="7.0" layoutY="172.0" onMouseClicked="#Test" prefHeight="18.0" prefWidth="118.0" text="Create Test" textFill="#f0ecec">
                <font>
-                  <Font name="Segoe UI Black" size="18.0" />
+                  <Font size="17.0" />
                </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="110.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#T_List" prefHeight="205.0" text="Teachers List">
+            </Label>
+            <Label fx:id="lblSubject" layoutX="7.0" layoutY="200.0" onMouseClicked="#Subject" prefHeight="18.0" prefWidth="118.0" text="Create Subject" textFill="#f0ecec">
                <font>
-                  <Font name="Segoe UI Black" size="18.0" />
+                  <Font size="17.0" />
                </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="210.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#P_Edit" prefHeight="205.0" text="Edit Profile">
-               <font>
-                  <Font name="Segoe UI Black" size="18.0" />
-               </font>
-            </Button>
-            <VBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Logout" prefHeight="115.0" text="Logout">
-                     <font>
-                        <Font name="Segoe UI Black" size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
+            </Label>
          </children>
-      </VBox>
+      </AnchorPane>
+      <Label fx:id="User_ID" layoutX="290.0" layoutY="40.0" text="Welcome ,">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
