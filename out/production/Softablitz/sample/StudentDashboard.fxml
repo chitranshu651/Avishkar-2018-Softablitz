@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StudentDashboard_Controller">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="132.0" style="-fx-background-color: #535559;">
+         <children>
+            <JFXButton layoutX="39.0" layoutY="333.0" onAction="#Logout" style="-fx-background-color: #0066ff;" text="Logout" textFill="#fdfafa" />
+            <Label fx:id="home" contentDisplay="CENTER" layoutX="7.0" layoutY="146.0" onMouseClicked="#Home" prefHeight="26.0" prefWidth="118.0" text="Home" textAlignment="CENTER" textFill="#e8e8e8">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTest" layoutX="7.0" layoutY="172.0" onMouseClicked="#Test" prefHeight="18.0" prefWidth="118.0" text="Take Test" textFill="#f0ecec">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSubject" layoutX="7.0" layoutY="200.0" onMouseClicked="#Results" prefHeight="18.0" prefWidth="118.0" text="Results" textFill="#f0ecec">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label fx:id="User_ID" layoutX="290.0" layoutY="40.0" text="Welcome ,">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

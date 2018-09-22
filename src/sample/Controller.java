@@ -93,7 +93,7 @@ public class Controller {
             //Above step gets the password and the salt necessary to check if given password and saved password match
             if (check.verifyUserPassword(pass, Spassword, Salt)) {
                 current.setUsername(user.getText());
-                Parent Dashboard = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+                Parent Dashboard = FXMLLoader.load(getClass().getResource("StudentDashboard.fxml"));
                 Scene DashboardScene = new Scene(Dashboard);
 
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -37,6 +37,8 @@ public class Student_SignUp_Controller {
 
     @FXML
     private void initialize(){
+
+        //All of the Require field validators for the TextFields
         RequiredFieldValidator validator = new RequiredFieldValidator();
         validator.setMessage("Input Required");
         name.getValidators().add(validator);
@@ -68,7 +70,7 @@ public class Student_SignUp_Controller {
 
     @FXML
     void SSignUp(ActionEvent event) throws SQLException, IOException, InvalidKeySpecException {
-
+        //Action of the Button Signup to Register the User
         ConnectionClass Student = new ConnectionClass();
         Connection connection= Student.getconnection();
         if ((password.getText()).equals(confirm.getText())){
@@ -104,6 +106,7 @@ public class Student_SignUp_Controller {
 
     @FXML
     private void back(MouseEvent event) throws IOException{
+        //To return back to home
         Parent home_parent= FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene Home= new Scene(home_parent);
 

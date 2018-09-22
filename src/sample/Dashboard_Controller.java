@@ -29,13 +29,13 @@ public class Dashboard_Controller {
     }
 
 
-        //SQL PULL OF DATA
     public void Logout(ActionEvent event) throws IOException{
         System.exit(0);
     }
 
     @FXML
     private void Subject(MouseEvent event) throws IOException{
+        //Loads Subject Creation Page
         Parent home_parent= FXMLLoader.load(getClass().getResource("Subject.fxml"));
         Scene Home= new Scene(home_parent);
 
@@ -46,6 +46,7 @@ public class Dashboard_Controller {
 
     @FXML
     private void Test(MouseEvent event) throws IOException{
+        //Loads Test Creation Page
         Parent home_parent= FXMLLoader.load(getClass().getResource("Test.fxml"));
         Scene Home= new Scene(home_parent);
 
@@ -55,5 +56,5 @@ public class Dashboard_Controller {
     }
 
 
-    public void Home(ActionEvent event){}
+    public void Home(MouseEvent event){}
 }

@@ -28,6 +28,7 @@ public class TestController {
 
 
     public void initialize() throws SQLException {
+        //Initializes the subject dropdown with the teachers subject
         Subject.getItems().clear();
         ConnectionClass Teacher = new ConnectionClass();
         Session_Id ses=new Session_Id();
@@ -44,6 +45,7 @@ public class TestController {
     public void Logout(ActionEvent event){
         System.exit(0);
     }
+
     @FXML
     private void Subject(MouseEvent event) throws IOException {
         Parent home_parent= FXMLLoader.load(getClass().getResource("Subject.fxml"));
@@ -65,6 +67,12 @@ public class TestController {
 
     @FXML
     private void Test(MouseEvent event) throws IOException{
+
+
+    }
+
+    @FXML
+    private void create(ActionEvent event){
 
     }
 

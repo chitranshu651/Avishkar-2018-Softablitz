@@ -38,6 +38,7 @@ public class Teacher_SignUp_Controller {
 
     @FXML
     private void initialize() {
+        //Validators for all the Fields
         RequiredFieldValidator validator = new RequiredFieldValidator();
         validator.setMessage("Input Required");
         name.getValidators().add(validator);
@@ -68,15 +69,21 @@ public class Teacher_SignUp_Controller {
     }
     @FXML
     public void TsignUp(ActionEvent event) throws SQLException, IOException, InvalidKeySpecException {
+        //Signs Up new Teachers
         ConnectionClass Teacher = new ConnectionClass();
         Connection connection= Teacher.getconnection();
         if ((password.getText()).equals(confirm.getText())){
+            //If both the Confirm Pasasword And Password Match
+            //Creates a Object of Password Util and then generates Encrypted Password
             PasswordUtils pass= new PasswordUtils();
             String salt= pass.getSalt(30);
             String securePass= pass.generateSecurePassword(password.getText(), salt);
+            //Puts the Enter Information into Database
             String sql ="INSERT INTO `teachers`(`Name`, `Email`, `Teacher_ID`,`Password`, `Salt`) VALUES('"+ name.getText() + "','" + email.getText() +"'," +id.getText() +",'" + securePass +"', '" + salt + "');";
             Statement statement= connection.createStatement();
             statement.execute(sql);
+
+            //Displays Alert for Sucess of Registeration
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText("Success");
@@ -90,6 +97,7 @@ public class Teacher_SignUp_Controller {
             window.show();
         }
         else{
+            //Shows Alert of Password Mismatch
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Password Mismatch");
             alert.setHeaderText("Error:");
@@ -102,6 +110,7 @@ public class Teacher_SignUp_Controller {
 
     @FXML
     private void back(MouseEvent event) throws IOException{
+        //Goes Back to Login Page
         Parent home_parent= FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene Home= new Scene(home_parent);
 
