@@ -13,6 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.ConnectionClass;
+import sample.Main;
 import sample.Session_Id;
 
 import java.io.IOException;
@@ -36,18 +37,16 @@ public class StudentDashboard_Controller {
     private Connection connection= Student.getconnection();
     public void initialize() throws SQLException {
         // Initializes the dashboard to User information
-        String name="";
-        String sql="Select `name` from students where Registration_No=" + Integer.parseInt(current.getUsername());
-        Statement statement = connection.createStatement();
-        ResultSet rs= statement.executeQuery(sql);
-        while(rs.next()){
-            name= rs.getString("Name");
-        }
+        Main.user.sendString("Name");
+        Main.user.sendString("Student");
+        Main.user.sendString(current.getUsername());
+        String name= Main.user.recieveString();
         User_ID.setText("Welcome, " + name);
     }
 
 
     public void Logout(ActionEvent event) throws IOException{
+        Main.user.sendString("Exit");
         System.exit(0);
     }
 

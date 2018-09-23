@@ -15,7 +15,7 @@
    <children>
       <Pane layoutX="311.0" layoutY="65.0" prefHeight="301.0" prefWidth="274.0" style="-fx-background-color: white;">
          <children>
-            <JFXTextField fx:id="user" labelFloat="true" layoutX="26.0" layoutY="116.0" prefHeight="25.0" prefWidth="229.0" promptText="Id" style="-fx-background-color: white;" />
+            <JFXTextField fx:id="username" labelFloat="true" layoutX="26.0" layoutY="116.0" prefHeight="25.0" prefWidth="229.0" promptText="Id" style="-fx-background-color: white;" />
             <Label layoutX="96.0" layoutY="21.0" text="Login" textFill="#0066ff">
                <font>
                   <Font name="System Bold" size="36.0" />

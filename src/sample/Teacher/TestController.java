@@ -11,6 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.ConnectionClass;
+import sample.Main;
 import sample.Session_Id;
 
 import javax.security.auth.Subject;
@@ -19,6 +20,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestController {
 
@@ -27,24 +30,23 @@ public class TestController {
 
     @FXML
     private JFXComboBox<String> NumberQ;
+    private Session_Id current= new Session_Id();
 
-
-    public void initialize() throws SQLException {
+    public void initialize() {
         //Initializes the subject dropdown with the teachers subject
         Subject.getItems().clear();
-        ConnectionClass Teacher = new ConnectionClass();
-        Session_Id ses=new Session_Id();
-        Connection connection= Teacher.getconnection();
-        String sql2 = "SELECT `Name` FROM `subjects` WHERE `Teacher Id`=" + Integer.parseInt(ses.getUsername()) + ";";
-        Statement statement1 = connection.createStatement();
-        ResultSet ks = statement1.executeQuery(sql2);
-        while (ks.next()) {
-            Subject.getItems().add(ks.getString("Name"));
+        Main.user.sendString("getSubjects");
+        Main.user.sendString(current.getUsername());
+        List subjectList=  (ArrayList)(Main.user.recieveObject());
+        String[] subjects= (String[]) subjectList.toArray();
+        for(String x: subjects){
+            Subject.getItems().add(x);
         }
         NumberQ.getItems().addAll("1","2","3","4","5","6","7","8","9","10","11","12","13","14");
     }
 
     public void Logout(ActionEvent event){
+        Main.user.sendString("Exit");
         System.exit(0);
     }
 

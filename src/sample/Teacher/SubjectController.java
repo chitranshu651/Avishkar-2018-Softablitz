@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.ConnectionClass;
+import sample.Main;
 import sample.Session_Id;
 
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class SubjectController {
 
 
     public void Logout(ActionEvent event){
-
+        Main.user.sendString("Exit");
         System.exit(0);
     }
     @FXML
