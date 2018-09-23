@@ -1,4 +1,4 @@
-package sample;
+package sample.Teacher;
 
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import sample.ConnectionClass;
+import sample.Session_Id;
 
 import javax.security.auth.Subject;
 import java.io.IOException;
@@ -28,6 +30,7 @@ public class TestController {
 
 
     public void initialize() throws SQLException {
+        //Initializes the subject dropdown with the teachers subject
         Subject.getItems().clear();
         ConnectionClass Teacher = new ConnectionClass();
         Session_Id ses=new Session_Id();
@@ -44,6 +47,7 @@ public class TestController {
     public void Logout(ActionEvent event){
         System.exit(0);
     }
+
     @FXML
     private void Subject(MouseEvent event) throws IOException {
         Parent home_parent= FXMLLoader.load(getClass().getResource("Subject.fxml"));
@@ -65,6 +69,12 @@ public class TestController {
 
     @FXML
     private void Test(MouseEvent event) throws IOException{
+
+
+    }
+
+    @FXML
+    private void create(ActionEvent event){
 
     }
 

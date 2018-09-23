@@ -36,6 +36,7 @@ public class Controller {
 
     @FXML
     private void initialize(){
+        //Initializes all of the required field validators
         RequiredFieldValidator validator= new RequiredFieldValidator();
         validator.setMessage("Input Required");
         user.getValidators().add(validator);
@@ -48,7 +49,7 @@ public class Controller {
     @FXML
     private void Tsignup(ActionEvent click) throws IOException {
         //When the Teacher Signup Button is clicked this function is invoked to change the scene to the Teacher Signup Page
-        Parent TeacherSign = FXMLLoader.load(getClass().getResource("Teacher_SignUp.fxml"));
+        Parent TeacherSign = FXMLLoader.load(getClass().getResource("Signup/Teacher_SignUp.fxml"));
         Scene TeacherSignupScene = new Scene(TeacherSign);
 
         Stage window = (Stage) ((Node) click.getSource()).getScene().getWindow();
@@ -61,7 +62,7 @@ public class Controller {
     @FXML
     private void SSignup(ActionEvent click) throws IOException {
         //When the Student Signup Button is clicked this function is invoked to change the scene to the Student Signup Page
-        Parent StudentSign = FXMLLoader.load(getClass().getResource("Student_SignUp.fxml"));
+        Parent StudentSign = FXMLLoader.load(getClass().getResource("Signup/Student_SignUp.fxml"));
         Scene StudentSignupScene = new Scene(StudentSign);
 
         Stage window = (Stage) ((Node) click.getSource()).getScene().getWindow();
@@ -93,7 +94,7 @@ public class Controller {
             //Above step gets the password and the salt necessary to check if given password and saved password match
             if (check.verifyUserPassword(pass, Spassword, Salt)) {
                 current.setUsername(user.getText());
-                Parent Dashboard = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+                Parent Dashboard = FXMLLoader.load(getClass().getResource("Student/StudentDashboard.fxml"));
                 Scene DashboardScene = new Scene(Dashboard);
 
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -120,9 +121,10 @@ public class Controller {
                     Spassword = ks.getString("Password");
                     Salt = ks.getString("Salt");
                 }
-                if (check.verifyUserPassword(pass, Spassword, Salt)) {
+                if (check.verifyUserPassword(pass, Spassword, Salt)) {//Checks if Entered password match password in database
+                    //If yes logs in
                     current.setUsername(user.getText());
-                    Parent Dashboard = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+                    Parent Dashboard = FXMLLoader.load(getClass().getResource("Teacher/Dashboard.fxml"));
                     Scene DashboardScene = new Scene(Dashboard);
 
                     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -130,7 +132,7 @@ public class Controller {
                     window.setScene(DashboardScene);
                     window.show();
                 }
-                else{
+                else{//If not displays a alert
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("ERROR");
                     alert.setHeaderText("Login and Password");
@@ -145,6 +147,7 @@ public class Controller {
 
         @FXML
         private void Close(MouseEvent event){
-            System.exit(0);
+            //Closes the window
+        System.exit(0);
         }
     }

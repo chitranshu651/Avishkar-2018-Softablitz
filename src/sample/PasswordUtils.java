@@ -15,6 +15,7 @@ public class PasswordUtils {
     private final int ITERATIONS = 10000;
     private final int KEY_LENGTH = 256;
 
+    //Generates the Salt to hash the password
     public String getSalt(int length) {
         StringBuilder returnValue = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
@@ -22,6 +23,8 @@ public class PasswordUtils {
         }
         return new String(returnValue);
     }
+
+    //Hashs the password to Base64
     public byte[] hash(char[] password, byte[] salt) throws InvalidKeySpecException {
         PBEKeySpec spec = new PBEKeySpec(password, salt, ITERATIONS, KEY_LENGTH);
         Arrays.fill(password, Character.MIN_VALUE);
@@ -34,6 +37,9 @@ public class PasswordUtils {
             spec.clearPassword();
         }
     }
+
+
+    //Called from the main class to generate the password
     public String generateSecurePassword(String password, String salt) throws InvalidKeySpecException {
         String returnValue = null;
         byte[] securePassword = hash(password.toCharArray(), salt.getBytes());
@@ -43,6 +49,8 @@ public class PasswordUtils {
         return returnValue;
     }
 
+
+    //Used to verify if the password entered is the same as the one stored
     public boolean verifyUserPassword(String providedPassword,
                                              String securedPassword, String salt) throws InvalidKeySpecException
     {

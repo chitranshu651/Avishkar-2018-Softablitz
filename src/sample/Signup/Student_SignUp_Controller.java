@@ -37,6 +37,8 @@ public class Student_SignUp_Controller {
 
     @FXML
     private void initialize(){
+
+        //All of the Require field validators for the TextFields
         RequiredFieldValidator validator = new RequiredFieldValidator();
         validator.setMessage("Input Required");
         name.getValidators().add(validator);
@@ -68,22 +70,26 @@ public class Student_SignUp_Controller {
 
     @FXML
     void SSignUp(ActionEvent event) throws SQLException, IOException, InvalidKeySpecException {
-
-        ConnectionClass Student = new ConnectionClass();
+        //Action of the Button Signup to Register the User
+        ConnectionClass Student = new ConnectionClass(); // Connects to Database
         Connection connection= Student.getconnection();
-        if ((password.getText()).equals(confirm.getText())){
+        if ((password.getText()).equals(confirm.getText())){// IF passwod and confirm password fields match
             PasswordUtils pass= new PasswordUtils();
+            //Gets the salt required for hashing
             String salt= pass.getSalt(30);
-            String securePass= pass.generateSecurePassword(password.getText(), salt);
+            String securePass= pass.generateSecurePassword(password.getText(), salt);// Hashes the password using the salt generated
         String sql ="INSERT INTO `students`(`Name`, `Email`, `Registration_No`, `Password`, `Salt`) VALUES('"+ name.getText() + "','" + email.getText() +"'," +Reg_No.getText() +",'"+
             securePass +"','" + salt + "')";
         Statement statement= connection.createStatement();
+        //Executes the sql statement to enter data of the user into database
         statement.execute(sql);
+        //creates dialog box to show success message
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
         alert.setHeaderText("Success");
         alert.setContentText("You have been registered");
         alert.showAndWait();
+        //Goes back to login page
         Parent home_parent= FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene Home= new Scene(home_parent);
 
@@ -104,6 +110,7 @@ public class Student_SignUp_Controller {
 
     @FXML
     private void back(MouseEvent event) throws IOException{
+        //To return back to home
         Parent home_parent= FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene Home= new Scene(home_parent);
 

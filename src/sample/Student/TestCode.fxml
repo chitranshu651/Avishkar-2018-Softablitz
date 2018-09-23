@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Student.TestCode">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="116.0" layoutY="94.0" onAction="#Test" style="-fx-background-color: #0066ff;" text="Take Test!" textFill="#fdfcfc" />
+      <JFXTextField fx:id="testCode" labelFloat="true" layoutX="83.0" layoutY="42.0" promptText="Test Code" />
+   </children>
+</AnchorPane>
