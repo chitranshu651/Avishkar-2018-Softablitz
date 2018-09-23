@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Teacher.TestController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="132.0" style="-fx-background-color: #535559;">
+         <children>
+            <JFXButton layoutX="39.0" layoutY="333.0" onAction="#Logout" style="-fx-background-color: #0066ff;" text="Logout" textFill="#fdfafa" />
+            <Label fx:id="home" contentDisplay="CENTER" layoutX="7.0" layoutY="146.0" onMouseClicked="#Home" prefHeight="26.0" prefWidth="118.0" text="Home" textAlignment="CENTER" textFill="#e8e8e8">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTest" layoutX="7.0" layoutY="172.0" onMouseClicked="#Test" prefHeight="18.0" prefWidth="118.0" style="-fx-background-color: white;" text="Create Test" textFill="#1e1e1e">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSubject" layoutX="7.0" layoutY="200.0" onMouseClicked="#Subject" prefHeight="18.0" prefWidth="118.0" text="Create Subject" textFill="#f0ecec">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="162.0" layoutY="70.0" prefHeight="18.0" prefWidth="98.0" text="Select Subject: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="128.0" text="Number of Questions:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="321.0" layoutY="188.0" onAction="#create" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: #0066ff;" text="Create" textFill="#fdf0f0" />
+      <JFXComboBox fx:id="Subject" layoutX="269.0" layoutY="68.0" prefHeight="26.0" prefWidth="170.0" />
+      <JFXComboBox fx:id="NumberQ" layoutX="326.0" layoutY="126.0" />
+   </children>
+</AnchorPane>
