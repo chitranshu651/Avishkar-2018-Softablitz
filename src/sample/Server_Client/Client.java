@@ -59,6 +59,15 @@ public class Client {
 
     }
 
+    public void sendInt(int a){
+        try{
+            dataOutput.writeInt(a);
+        }
+        catch(IOException e){
+            System.out.println(e);
+        }
+    }
+
     public Object recieveObject(){
         try{
             return ObjectInput.readObject();

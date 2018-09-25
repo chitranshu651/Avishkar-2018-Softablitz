@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -28,18 +29,19 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="162.0" layoutY="70.0" prefHeight="18.0" prefWidth="98.0" text="Select Subject: ">
+      <Label layoutX="161.0" layoutY="138.0" prefHeight="18.0" prefWidth="98.0" text="Select Subject: ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="143.0" layoutY="128.0" text="Number of Questions:">
+      <JFXButton layoutX="293.0" layoutY="317.0" onAction="#create" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: #0066ff;" text="Create" textFill="#fdf0f0" />
+      <JFXComboBox fx:id="Subject" layoutX="353.0" layoutY="135.0" prefHeight="26.0" prefWidth="170.0" />
+      <JFXTextField fx:id="Sections" layoutX="381.0" layoutY="198.0" />
+      <Label layoutX="144.0" layoutY="200.0" text="Number of Sections">
          <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <JFXButton layoutX="321.0" layoutY="188.0" onAction="#create" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: #0066ff;" text="Create" textFill="#fdf0f0" />
-      <JFXComboBox fx:id="Subject" layoutX="269.0" layoutY="68.0" prefHeight="26.0" prefWidth="170.0" />
-      <JFXComboBox fx:id="NumberQ" layoutX="326.0" layoutY="126.0" />
+      <JFXTextField fx:id="Name" labelFloat="true" layoutX="269.0" layoutY="48.0" promptText="Test Name" />
    </children>
 </AnchorPane>
