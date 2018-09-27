@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Student.TestResults">
+   <children>
+      <Label fx:id="Marks" layoutX="189.0" layoutY="105.0" prefHeight="87.0" prefWidth="182.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="223.0" layoutY="265.0" onAction="#Home" prefHeight="50.0" prefWidth="114.0" style="-fx-background-color: #0066ff;" text="Continue" textFill="#f2efef" />
+   </children>
+</AnchorPane>

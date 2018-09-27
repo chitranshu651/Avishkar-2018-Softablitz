@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Student.testingController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="900.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Student.testingController">
+   <children>
+      <Label fx:id="Question" layoutX="53.0" layoutY="36.0" prefHeight="88.0" prefWidth="494.0" text="Label">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="nextbtn" buttonType="RAISED" layoutX="485.0" layoutY="411.0" onAction="#next" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: #0066ff;" text="Next" textFill="#fdf8f8" />
+      <JFXButton fx:id="submitbtn" buttonType="RAISED" layoutX="259.0" layoutY="475.0" onAction="#submit" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: #0066ff;" text="Submit" textFill="#fdf8f8" />
+      <JFXButton fx:id="backbtn" buttonType="RAISED" layoutX="53.0" layoutY="415.0" onAction="#back" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: #0066ff;" text="Back" textFill="#fdf8f8" />
+      <VBox layoutX="81.0" layoutY="152.0" prefHeight="200.0" prefWidth="298.0" spacing="40.0">
+         <children>
+            <JFXRadioButton fx:id="oA">
+               <toggleGroup>
+                  <ToggleGroup fx:id="Answers" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="oB" toggleGroup="$Answers" />
+            <JFXRadioButton fx:id="oC" toggleGroup="$Answers" />
+            <JFXRadioButton fx:id="oD" toggleGroup="$Answers" />
+         </children>
+      </VBox>
+      <Label fx:id="Time" layoutX="239.0" layoutY="402.0" prefHeight="42.0" prefWidth="122.0" text="time" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
