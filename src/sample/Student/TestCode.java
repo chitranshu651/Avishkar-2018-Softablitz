@@ -9,51 +9,54 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCombination;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.ConnectionClass;
+import sample.Main;
+import sample.Session_Id;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-public class TestCode {
+public class TestCode extends Thread{
 
     @FXML
     private JFXTextField  testCode;
 
     private ConnectionClass Student = new ConnectionClass();
     private Connection connection= Student.getconnection();
-
+    static Stage stage;
+//Add Section Wise testing
     @FXML
-    private void Test(ActionEvent event)throws IOException {
-        int time=0;
-        try {
-            String sql = "SELECT `time` from `test` where `Test Id`='" + testCode.getText() + "'";
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-            while (rs.next()) {
-                time = (rs.getInt("Time"));
-            }
-            sample.Student.TestData test = new sample.Student.TestData(testCode.getText(), time);
-            Parent home_parent= FXMLLoader.load(getClass().getResource("testing.fxml"));
+    private void Test(ActionEvent event)throws IOException, InterruptedException {
+        Main.user.sendString("getSections");
+        Main.user.sendString(testCode.getText());
+        Session_Id.setTestId(testCode.getText());
+        List<String> sections =(ArrayList<String>)(Main.user.recieveObject());
+        String [] sectionar = sections.toArray(new String[sections.size()]);
+        Session_Id.setSections(sectionar);
+        Session_Id.setNo_sections(sectionar.length);
+        Session_Id.setMarks(0);
+        if(Session_Id.getNo_sections()!= 0){
+            Parent home_parent= FXMLLoader.load(getClass().getResource("NextSection.fxml"));
             Scene Home= new Scene(home_parent);
 
             Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
             window.setScene(Home);
-            window.setFullScreen(true);
             window.show();
+        }
+        else{
 
         }
-        catch(SQLException e){
-            System.out.println(e);
-            System.out.println("Error here");
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("No Test id found");
-            alert.setContentText("Sorry No Test was Found");
-            alert.showAndWait();
         }
+
+
     }
-}
+
+

@@ -8,6 +8,24 @@ public class Session_Id {
     private static int no_Question;
     private static int no_sections;
     private static String SectionId;
+    private static int marks;
+    private static String [] sections;
+
+    public static String[] getSections() {
+        return sections;
+    }
+
+    public static void setSections(String[] sections) {
+        Session_Id.sections = sections;
+    }
+
+    public static int getMarks() {
+        return marks;
+    }
+
+    public static void setMarks(int marks) {
+        Session_Id.marks = marks;
+    }
 
     public static String getSectionId() {
         return SectionId;
@@ -47,5 +65,9 @@ public class Session_Id {
 
     public static void setNo_Question(int no_Question) {
         Session_Id.no_Question = no_Question;
+    }
+
+    public static void addMarks(int add){
+        marks+=add;
     }
 }

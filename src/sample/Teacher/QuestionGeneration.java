@@ -53,13 +53,15 @@ public class QuestionGeneration {
     private void submit(ActionEvent event) throws IOException {
         if(count!=(this.TestQuestion-1)){
             Main.user.sendString("addQuestion");
-            Main.user.sendString(Session_Id.getTestId());
+            Main.user.sendString(Session_Id.getSectionId());
             Main.user.sendString(Question.getText());
             Main.user.sendString(OptionA.getText());
             Main.user.sendString(OptionB.getText());
             Main.user.sendString(OptionC.getText());
             Main.user.sendString(OptionD.getText());
             Main.user.sendString(Answer.getSelectionModel().getSelectedItem());
+            Main.user.sendString(""+count);
+            Main.user.sendString(Session_Id.getTestId());
             boolean check = Main.user.recieveBoolean();
             if(check){
                 count++;
@@ -82,6 +84,7 @@ public class QuestionGeneration {
             Main.user.sendString(OptionD.getText());
             Main.user.sendString(Answer.getSelectionModel().getSelectedItem());
             Main.user.sendString(""+ count);
+            Main.user.sendString(Session_Id.getTestId());
             boolean check = Main.user.recieveBoolean();
             if(check){
                 count++;

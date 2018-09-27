@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Student.NextSection">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="55.0" layoutY="29.0" onAction="#Section" prefHeight="41.0" prefWidth="89.0" style="-fx-background-color: #0066ff;" text="Next Section" textFill="#f5f4f4" />
+   </children>
+</AnchorPane>

@@ -14,9 +14,9 @@
          </font>
       </Label>
       <JFXButton layoutX="293.0" layoutY="317.0" onAction="#create" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: #0066ff;" text="Create" textFill="#fdf0f0" />
-      <JFXTextField fx:id="NumberQ" layoutX="245.0" layoutY="154.0" />
-      <JFXTextField fx:id="Time" layoutX="254.0" layoutY="227.0" />
-      <Label layoutX="27.0" layoutY="229.0" text="Time Allowed For Test:">
+      <JFXTextField fx:id="NumberQ" layoutX="269.0" layoutY="154.0" />
+      <JFXTextField fx:id="Time" layoutX="269.0" layoutY="227.0" />
+      <Label layoutX="27.0" layoutY="229.0" text="Time Allowed For Test in minutes:">
          <font>
             <Font size="15.0" />
          </font>

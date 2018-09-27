@@ -100,6 +100,7 @@ public class TestController {
         Main.user.sendString(Tcode.toString());
         Main.user.sendInt(Integer.parseInt(Sections.getText()));
         Main.user.sendString(Scode);
+        Main.user.sendString(current.getUsername());
         boolean check=Main.user.recieveBoolean();
         if(check){
             Alert alert=  new Alert(Alert.AlertType.INFORMATION);

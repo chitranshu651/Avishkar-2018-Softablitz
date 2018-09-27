@@ -74,7 +74,6 @@ public class Section {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
             i++;
-            if(i==Session_Id.getNo_sections()){
                 Parent home_parent= FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
                 Scene Home= new Scene(home_parent);
 
@@ -85,4 +84,4 @@ public class Section {
         }
 
     }
-}
+

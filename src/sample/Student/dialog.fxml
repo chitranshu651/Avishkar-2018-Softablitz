@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Student.dialog">
+   <children>
+      <Label layoutX="33.0" layoutY="72.0" text="Do you want to proceed?">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="109.0" layoutY="127.0" onAction="#Yes" style="-fx-background-color: #0066ff;" text="Proceed" textFill="#f5f3f3" />
+   </children>
+</AnchorPane>
