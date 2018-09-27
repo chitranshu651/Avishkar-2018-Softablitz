@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.ConnectionClass;
+import sample.Main;
 import sample.Session_Id;
 
 import java.io.IOException;
@@ -23,12 +24,14 @@ public class SubjectController {
     @FXML
     private JFXTextField Name;
 
+    @FXML
+    private JFXTextField SubjectCode;
 
     private final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 
     public void Logout(ActionEvent event){
-
+        Main.user.sendString("Exit");
         System.exit(0);
     }
     @FXML
@@ -60,34 +63,48 @@ public class SubjectController {
     @FXML
     private void create(ActionEvent event) throws SQLException, IOException{
         //Creates a Subject
-        ConnectionClass Teacher = new ConnectionClass();
-        Connection connection= Teacher.getconnection();// Connects to Database
         Session_Id teacher= new Session_Id(); // gets the Users Username
 
+        Main.user.sendString("addSubject");
+        Main.user.sendString(Name.getText());
+        Main.user.sendString(teacher.getUsername());
         //Creates a Random Subject Id
          StringBuilder Scode = new StringBuilder(7);
-        for (int i = 0; i < 7; i++) {
-            //Generates a Random Subject Code
-            Scode.append(ALPHABET.charAt((int)(62*Math.random())));
+        if(SubjectCode.getText().equals("")) {
+            for (int i = 0; i < 7; i++) {
+                //Generates a Random Subject Code
+                Scode.append(ALPHABET.charAt((int) (62 * Math.random())));
+            }
+            Main.user.sendString(Scode.toString());
         }
+        else{
+            Main.user.sendString(SubjectCode.getText());
+            }
         //Puts the Subject into Database
-        String sql ="INSERT INTO `subjects` (`Name`, `Teacher Id`, `Subject Id`) VALUES ('" +Name.getText() +"'," + teacher.getUsername()+ ",'" + Scode+"');";
-        Statement statement= connection.createStatement();
-        // Executes Sql statement to put subject information into Database
-        statement.execute(sql);
-        //Presents a Alert for Success of Subject Creation
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText("Success");
-        alert.setContentText("Subject Created");
-        alert.showAndWait();
-        //Loads the Dasboard
-        Parent home_parent= FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
-        Scene Home= new Scene(home_parent);
+        boolean check= Main.user.recieveBoolean();
+        if(check){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText("Success");
+            alert.setContentText("Subject Created");
+            alert.showAndWait();
+            //Loads the Dasboard
+            Parent home_parent= FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+            Scene Home= new Scene(home_parent);
 
-        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
-        window.setScene(Home);
-        window.show();
+            Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+            window.setScene(Home);
+            window.show();
+
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Failure");
+            alert.setHeaderText("Failure");
+            alert.setContentText("Subject Creation Failed");
+            alert.showAndWait();
+        }
+
     }
 }
 

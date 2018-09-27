@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Teacher.QuestionGeneration">
+   <children>
+      <JFXTextArea fx:id="Question" labelFloat="true" layoutX="52.0" layoutY="22.0" prefHeight="87.0" prefWidth="464.0" promptText="Question" />
+      <JFXTextArea fx:id="OptionA" labelFloat="true" layoutX="82.0" layoutY="130.0" prefHeight="66.0" prefWidth="464.0" promptText="Option A" />
+      <JFXTextArea fx:id="OptionB" labelFloat="true" layoutX="82.0" layoutY="220.0" prefHeight="66.0" prefWidth="464.0" promptText="Option B" />
+      <JFXTextArea fx:id="OptionC" labelFloat="true" layoutX="82.0" layoutY="317.0" prefHeight="66.0" prefWidth="464.0" promptText="Option C" />
+      <JFXTextArea fx:id="OptionD" labelFloat="true" layoutX="82.0" layoutY="409.0" prefHeight="66.0" prefWidth="464.0" promptText="Option D" />
+      <JFXButton buttonType="RAISED" layoutX="230.0" layoutY="561.0" onAction="#submit" prefHeight="38.0" prefWidth="167.0" style="-fx-background-color: #0066ff;" text="Submit and Continue" textFill="#f2ecec" />
+      <JFXComboBox fx:id="Answer" layoutX="286.0" layoutY="503.0" />
+      <Label layoutX="216.0" layoutY="507.0" text="Answer">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

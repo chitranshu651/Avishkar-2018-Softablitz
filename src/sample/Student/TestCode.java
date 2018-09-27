@@ -30,11 +30,11 @@ public class TestCode {
     private void Test(ActionEvent event)throws IOException {
         int time=0;
         try {
-            String sql = "SELECT `time` from `Test` where `Test Id`='" + testCode.getText() + "'";
+            String sql = "SELECT `time` from `test` where `Test Id`='" + testCode.getText() + "'";
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                time = Integer.parseInt(rs.getString("Time"));
+                time = (rs.getInt("Time"));
             }
             sample.Student.TestData test = new sample.Student.TestData(testCode.getText(), time);
             Parent home_parent= FXMLLoader.load(getClass().getResource("testing.fxml"));

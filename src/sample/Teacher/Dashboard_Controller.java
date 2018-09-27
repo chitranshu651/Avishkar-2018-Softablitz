@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
+import sample.Main;
 import sample.Session_Id;
 
 import java.io.IOException;
@@ -26,11 +27,16 @@ public class Dashboard_Controller {
     private Session_Id current = new Session_Id();
 
     public void initialize() {
-        User_ID.setText("Welcome, " + current.getUsername());
+        Main.user.sendString("Name");
+        Main.user.sendString("Teacher");
+        Main.user.sendString(current.getUsername());
+        String name =Main.user.recieveString();
+        User_ID.setText("Welcome, " + name);
     }
 
 
     public void Logout(ActionEvent event) throws IOException{
+        Main.user.sendString("Exit");
         System.exit(0);
     }
 

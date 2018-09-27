@@ -18,6 +18,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import sample.ConnectionClass;
+import sample.PasswordUtils;
 
 public class Teacher_SignUp_Controller {
 
@@ -79,22 +81,37 @@ public class Teacher_SignUp_Controller {
             String salt= pass.getSalt(30);
             String securePass= pass.generateSecurePassword(password.getText(), salt);
             //Puts the Enter Information into Database
-            String sql ="INSERT INTO `teachers`(`Name`, `Email`, `Teacher_ID`,`Password`, `Salt`) VALUES('"+ name.getText() + "','" + email.getText() +"'," +id.getText() +",'" + securePass +"', '" + salt + "');";
-            Statement statement= connection.createStatement();
-            statement.execute(sql);
+            Main.user.sendString("Signup");
+            Main.user.sendString("Teacher");
+            Main.user.sendString(name.getText());
+            Main.user.sendString(email.getText());
+            Main.user.sendString(id.getText());
+            Main.user.sendString(securePass);
+            Main.user.sendString(salt);
+            Boolean SignUp=Main.user.recieveBoolean();
+            if(SignUp){
+                //Displays Alert for Sucess of Registeration
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Success");
+                alert.setContentText("You have been registered");
+                alert.showAndWait();
+                Parent home_parent= FXMLLoader.load(getClass().getResource("sample.fxml"));
+                Scene Home= new Scene(home_parent);
 
-            //Displays Alert for Sucess of Registeration
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Success");
-            alert.setContentText("You have been registered");
-            alert.showAndWait();
-            Parent home_parent= FXMLLoader.load(getClass().getResource("sample.fxml"));
-            Scene Home= new Scene(home_parent);
+                Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+                window.setScene(Home);
+                window.show();
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Failure");
+                alert.setHeaderText("Failure");
+                alert.setContentText("Registration Failed");
+                alert.showAndWait();
+            }
 
-            Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
-            window.setScene(Home);
-            window.show();
+
         }
         else{
             //Shows Alert of Password Mismatch
@@ -121,6 +138,7 @@ public class Teacher_SignUp_Controller {
 
     @FXML
     private void Close(MouseEvent event){
+        Main.user.sendString("Exit");
         System.exit(0);
     }
 }

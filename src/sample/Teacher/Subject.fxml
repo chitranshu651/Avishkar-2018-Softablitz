@@ -29,6 +29,7 @@
          </children>
       </AnchorPane>
       <JFXTextField fx:id="Name" layoutX="180.0" layoutY="98.0" prefHeight="26.0" prefWidth="291.0" promptText="Subject Name" />
-      <JFXButton buttonType="RAISED" layoutX="285.0" layoutY="187.0" onAction="#create" prefHeight="35.0" prefWidth="82.0" style="-fx-background-color: #0066ff;" text="Create" textFill="#f2eeee" />
+      <JFXButton buttonType="RAISED" layoutX="284.0" layoutY="214.0" onAction="#create" prefHeight="35.0" prefWidth="82.0" style="-fx-background-color: #0066ff;" text="Create" textFill="#f2eeee" />
+      <JFXTextField fx:id="SubjectCode" layoutX="180.0" layoutY="147.0" prefHeight="26.0" prefWidth="291.0" promptText="Subject Code (Optional)" />
    </children>
 </AnchorPane>

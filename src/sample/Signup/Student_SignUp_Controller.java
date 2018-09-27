@@ -17,6 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import sample.ConnectionClass;
+import sample.PasswordUtils;
 
 public class Student_SignUp_Controller {
 
@@ -71,31 +73,42 @@ public class Student_SignUp_Controller {
     @FXML
     void SSignUp(ActionEvent event) throws SQLException, IOException, InvalidKeySpecException {
         //Action of the Button Signup to Register the User
-        ConnectionClass Student = new ConnectionClass(); // Connects to Database
-        Connection connection= Student.getconnection();
         if ((password.getText()).equals(confirm.getText())){// IF passwod and confirm password fields match
             PasswordUtils pass= new PasswordUtils();
             //Gets the salt required for hashing
             String salt= pass.getSalt(30);
             String securePass= pass.generateSecurePassword(password.getText(), salt);// Hashes the password using the salt generated
-        String sql ="INSERT INTO `students`(`Name`, `Email`, `Registration_No`, `Password`, `Salt`) VALUES('"+ name.getText() + "','" + email.getText() +"'," +Reg_No.getText() +",'"+
-            securePass +"','" + salt + "')";
-        Statement statement= connection.createStatement();
-        //Executes the sql statement to enter data of the user into database
-        statement.execute(sql);
-        //creates dialog box to show success message
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText("Success");
-        alert.setContentText("You have been registered");
-        alert.showAndWait();
-        //Goes back to login page
-        Parent home_parent= FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene Home= new Scene(home_parent);
+            Main.user.sendString("Signup");
+            Main.user.sendString("Student");
+            Main.user.sendString(name.getText());
+            Main.user.sendString(email.getText());
+            Main.user.sendString(Reg_No.getText());
+            Main.user.sendString(securePass);
+            Main.user.sendString(salt);
+            Boolean SignUp=Main.user.recieveBoolean();
+            if(SignUp){
+                //creates dialog box to show success message
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText("Success");
+                alert.setContentText("You have been registered");
+                alert.showAndWait();
+                //Goes back to login page
+                Parent home_parent= FXMLLoader.load(getClass().getResource("sample.fxml"));
+                Scene Home= new Scene(home_parent);
 
-        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
-        window.setScene(Home);
-        window.show();
+                Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
+                window.setScene(Home);
+                window.show();
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Failure");
+                alert.setHeaderText("Failure");
+                alert.setContentText("Registration Failed");
+                alert.showAndWait();
+            }
+
     }
         else{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -121,6 +134,7 @@ public class Student_SignUp_Controller {
 
     @FXML
     private void Close(MouseEvent event){
+        Main.user.sendString("Exit");
         System.exit(0);
     }
 }

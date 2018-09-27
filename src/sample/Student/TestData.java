@@ -12,8 +12,8 @@ public class TestData {
 
     public TestData(){};
 
-    public int getTestCode(){
-        return Integer.parseInt(testCode);
+    public String getTestCode(){
+        return (testCode);
     }
 
     public int getTime(){
