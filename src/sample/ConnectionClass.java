@@ -9,7 +9,7 @@ public class ConnectionClass {
     public Connection getconnection(){
         String dbName= "avishkar_softablitz_18"; //Database Name
         String user= "root"; //Username of Database
-        String password="Jashu651";//Password
+        String password=$password;//Password
         //Tries conecting to database if doesnt work gives a error
         try{
              connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName+"?useSSL=false",user,password);
